@@ -1,6 +1,12 @@
+# Lilypond generated files and logs.
 *.pdf
 *.ps
 *.midi
 *.mid
 *.log
 *~
+
+# NodeJS compile pipeline.
+node_modules
+lib
+public/js/bundle.js
