@@ -6,7 +6,7 @@ import List, { ListItem, ListItemText } from 'material-ui/List';
 
 import { Route, Link } from 'react-router-dom'
 
-import Tune from './Tune'
+import TunePage from './TunePage'
 
 // @todo Rename this if we have some kind of JSON naming convention.
 import data from '../../data/tunes.json';
@@ -19,14 +19,14 @@ const styles = theme => ({
 });
 
 // @todo Rename this to TunesList?
-function Tunes(props) {
+function TunesList(props) {
   const { classes } = props;
 
   const TunesListItems = data.map(function(tune, index) {
     return (
         <ListItem button key={ tune.id } component={ Link } to={ '/tune/' + tune.id } >
           <ListItemText primary={ tune.name } />
-          <Route path={ '/tune/' + tune.id } component={ Tune } />
+          <Route path={ '/tune/' + tune.id } component={ TunePage } />
         </ListItem>
     )
   })
@@ -40,8 +40,8 @@ function Tunes(props) {
   );
 }
 
-Tunes.propTypes = {
+TunesList.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Tunes);
+export default withStyles(styles)(TunesList);

@@ -3,14 +3,12 @@ import React from 'react'
 import { MuiThemeProvider, createMuiTheme, withStyles} from 'material-ui/styles'
 import { blue, amber } from 'material-ui/colors'
 
-import { Route, Switch } from 'react-router-dom'
+import Reboot from 'material-ui/Reboot'
+import Typography from 'material-ui/Typography'
 
-import AppBar from 'material-ui/AppBar'
-
-import SimpleAppBar from './SimpleAppBar'
-import Tunes from './Tunes'
-import Tune from './Tune'
-import NotFound from './NotFound'
+import AppToolbar from './AppToolbar'
+import Routes from './Routes'
+import Sidebar from './Sidebar'
 
 class App extends React.Component {
   constructor(properties, context) {
@@ -34,20 +32,18 @@ class App extends React.Component {
   render() {
     return (
       <MuiThemeProvider theme={this.muiTheme}>
+        <Reboot />
         <header>
-          <SimpleAppBar />
+          <AppToolbar />
+          <Sidebar />
         </header>
 
         <section id="content">
-          <Switch>
-            <Route exact path='/' component={ Tunes } />
-            <Route path='/tune/:tuneId' component={ Tune } />
-            <Route component={ NotFound } />
-          </Switch>
+          <Routes />
         </section>
 
         <footer>
-          <p>&copy; Public Domain</p>
+          <Typography>&copy; Public Domain</Typography>
         </footer>
       </MuiThemeProvider>
     )

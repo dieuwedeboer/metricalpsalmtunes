@@ -24,7 +24,7 @@ const styles = {
   },
 };
 
-class MenuAppBar extends React.Component {
+class AppToolbar extends React.Component {
   constructor(properties, context) {
     super(properties, context)
 
@@ -105,8 +105,8 @@ class MenuAppBar extends React.Component {
   }
 }
 
-MenuAppBar.propTypes = {
+AppToolbar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(MenuAppBar);
+export default withStyles(styles)(AppToolbar);

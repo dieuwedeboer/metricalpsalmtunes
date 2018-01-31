@@ -15,7 +15,7 @@ const styles = theme => ({
   },
 });
 
-function Tune(props) {
+function TunePage(props) {
   const { classes, match } = props;
 
   return (
@@ -26,8 +26,8 @@ function Tune(props) {
   );
 }
 
-Tune.propTypes = {
+TunePage.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(Tune);
+export default withStyles(styles)(TunePage);
