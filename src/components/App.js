@@ -6,7 +6,7 @@ import { blue, amber } from 'material-ui/colors'
 import Reboot from 'material-ui/Reboot'
 import Typography from 'material-ui/Typography'
 
-import AppToolbar from './AppToolbar'
+import TitleBar from './TitleBar'
 import Routes from './Routes'
 
 class App extends React.Component {
@@ -33,7 +33,7 @@ class App extends React.Component {
       <MuiThemeProvider theme={this.muiTheme}>
         <Reboot />
         <header>
-          <AppToolbar />
+          <TitleBar />
         </header>
 
         <section id="content">

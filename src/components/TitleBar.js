@@ -26,8 +26,7 @@ const styles = {
   },
 };
 
-// @todo Rename this to "Titlebar"
-class AppToolbar extends React.Component {
+class TitleBar extends React.Component {
   constructor(properties, context) {
     super(properties, context)
 
@@ -37,12 +36,11 @@ class AppToolbar extends React.Component {
       sidebarOpen: false,
     }
 
-    // @todo Make this a toggleSidebar function.
-    this.handleSidebar = event => {
+    this.toggleSidebar = event => {
       this.setState({ sidebarOpen: !this.state.sidebarOpen })
     }
     // @todo Attempt without this to see what happens.
-    this.handleSidebar.bind(this)
+    this.toggleSidebar.bind(this)
 
     this.handleChange = (event, checked) => {
       this.setState({ auth: checked })
@@ -59,7 +57,7 @@ class AppToolbar extends React.Component {
 
   render() {
     const { classes } = this.props
-    const { auth, anchorEl } = this.state
+    const { auth, anchorEl, sidebarOpen } = this.state
     const open = Boolean(anchorEl)
 
     return (
@@ -76,7 +74,7 @@ class AppToolbar extends React.Component {
           <Toolbar>
             <IconButton
               className={classes.menuButton} color="inherit" aria-label="Menu"
-              onClick={this.handleSidebar}
+              onClick={this.toggleSidebar}
             >
               <MenuIcon />
             </IconButton>
@@ -114,14 +112,14 @@ class AppToolbar extends React.Component {
             )}
           </Toolbar>
         </AppBar>
-        <Sidebar handleSidebar={this.handleSidebar} sidebarOpen={this.state.sidebarOpen} />
+        <Sidebar toggleSidebar={this.toggleSidebar} sidebarOpen={sidebarOpen} />
       </div>
     );
   }
 }
 
-AppToolbar.propTypes = {
+TitleBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(AppToolbar);
+export default withStyles(styles)(TitleBar);

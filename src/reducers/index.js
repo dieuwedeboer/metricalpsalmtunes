@@ -1,10 +1,11 @@
+import data from '../../data/tunes.json';
+
 /**
  *
  */
 
 const initialState = {
-  sidebarVisible: false,
-  tunes: [],
+  tunes: data,
 }
 
 function tuneApp(state, action) {

@@ -1,0 +1,16 @@
+[
+    {
+        "id": "crimond",
+        "name": "Crimond",
+        "file": "_Crimond.ly",
+        "config": "default",
+        "score": "choir"
+    },
+    {
+        "id": "old100th",
+        "name": "Old 100th",
+        "file": "_Old100th.ly",
+        "config": "default",
+        "score": "choir"
+    }
+]

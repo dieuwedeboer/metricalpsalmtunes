@@ -13,20 +13,15 @@ const styles = {
   list: {
     width: 250,
   },
-  listFull: {
-    width: 'auto',
-  },
 };
 
 class Sidebar extends React.Component {
   constructor(properties, context) {
     super(properties, context)
-
-    // @todo Can we "nativise" the sidebar state handles?
   }
 
   render() {
-    const { classes } = this.props;
+    const { classes, toggleSidebar, sidebarOpen } = this.props;
 
     const NavList = (
       <div className={classes.list} >
@@ -50,12 +45,12 @@ class Sidebar extends React.Component {
 
     return (
       <div>
-        <Drawer open={this.props.sidebarOpen} onClose={this.props.handleSidebar} >
+        <Drawer open={sidebarOpen} onClose={toggleSidebar} >
           <div
             tabIndex={0}
             role="button"
-            onClick={this.props.handleSidebar}
-            onKeyDown={this.props.handleSidebar}
+            onClick={toggleSidebar}
+            onKeyDown={toggleSidebar}
           >
             {NavList}
           </div>
@@ -67,7 +62,8 @@ class Sidebar extends React.Component {
 
 Sidebar.propTypes = {
   classes: PropTypes.object.isRequired,
-  // @todo expand this with the passed sidebarhandles?
+  toggleSidebar: PropTypes.func.isRequired,
+  sidebarOpen: PropTypes.bool.isRequired,
 }
 
 export default withStyles(styles)(Sidebar);
