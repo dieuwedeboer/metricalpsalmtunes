@@ -8,7 +8,6 @@ import Typography from 'material-ui/Typography'
 
 import AppToolbar from './AppToolbar'
 import Routes from './Routes'
-import Sidebar from './Sidebar'
 
 class App extends React.Component {
   constructor(properties, context) {
@@ -35,7 +34,6 @@ class App extends React.Component {
         <Reboot />
         <header>
           <AppToolbar />
-          <Sidebar />
         </header>
 
         <section id="content">

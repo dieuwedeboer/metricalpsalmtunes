@@ -11,7 +11,6 @@ import App from './components/App'
 import express from 'express'
 
 let app = express()
-let store = createStore(reducer)
 
 // Material-UI user-agent.
 global.navigator = global.navigator || {}
@@ -25,6 +24,11 @@ app.use(express.static('public'))
 
 // GET /
 app.get('*', function (req, res) {
+  // Create a new Redux store instance
+  const store = createStore(reducer)
+
+  const preloadedState = store.getState()
+
   res.render('layout', {
     // The server responds to the initial request by pre-rendering the
     // application using a static router.
@@ -34,7 +38,8 @@ app.get('*', function (req, res) {
           <App />
         </Router>
       </Provider>
-    )
+    ),
+    preloadedState: JSON.stringify(preloadedState).replace(/</g, '\\u003c'),
   })
 })
 

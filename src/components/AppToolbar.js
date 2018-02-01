@@ -11,6 +11,8 @@ import Switch from 'material-ui/Switch';
 import { FormControlLabel, FormGroup } from 'material-ui/Form';
 import Menu, { MenuItem } from 'material-ui/Menu';
 
+import Sidebar from './Sidebar'
+
 const styles = {
   root: {
     width: '100%',
@@ -24,6 +26,7 @@ const styles = {
   },
 };
 
+// @todo Rename this to "Titlebar"
 class AppToolbar extends React.Component {
   constructor(properties, context) {
     super(properties, context)
@@ -31,25 +34,33 @@ class AppToolbar extends React.Component {
     this.state = {
       auth: true,
       anchorEl: null,
-    };
+      sidebarOpen: false,
+    }
+
+    // @todo Make this a toggleSidebar function.
+    this.handleSidebar = event => {
+      this.setState({ sidebarOpen: !this.state.sidebarOpen })
+    }
+    // @todo Attempt without this to see what happens.
+    this.handleSidebar.bind(this)
 
     this.handleChange = (event, checked) => {
-      this.setState({ auth: checked });
-    };
+      this.setState({ auth: checked })
+    }
 
     this.handleMenu = event => {
-      this.setState({ anchorEl: event.currentTarget });
-    };
+      this.setState({ anchorEl: event.currentTarget })
+    }
 
     this.handleClose = () => {
-      this.setState({ anchorEl: null });
-    };
+      this.setState({ anchorEl: null })
+    }
   }
 
   render() {
-    const { classes } = this.props;
-    const { auth, anchorEl } = this.state;
-    const open = Boolean(anchorEl);
+    const { classes } = this.props
+    const { auth, anchorEl } = this.state
+    const open = Boolean(anchorEl)
 
     return (
       <div className={classes.root}>
@@ -63,7 +74,10 @@ class AppToolbar extends React.Component {
         </FormGroup>
         <AppBar position="static">
           <Toolbar>
-            <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
+            <IconButton
+              className={classes.menuButton} color="inherit" aria-label="Menu"
+              onClick={this.handleSidebar}
+            >
               <MenuIcon />
             </IconButton>
             <Typography type="title" color="inherit" className={classes.flex}>
@@ -100,6 +114,7 @@ class AppToolbar extends React.Component {
             )}
           </Toolbar>
         </AppBar>
+        <Sidebar handleSidebar={this.handleSidebar} sidebarOpen={this.state.sidebarOpen} />
       </div>
     );
   }

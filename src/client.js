@@ -8,9 +8,18 @@ import reducer from './reducers'
 
 import App from './components/App'
 
-let store = createStore(reducer)
+// Grab the state from a global variable injected into the server-generated HTML
+const preloadedState = window.__PRELOADED_STATE__
 
-// The client replaces the server pre-rendered response with a browser router.
+// Allow the passed state to be garbage-collected
+delete window.__PRELOADED_STATE__
+
+// Create Redux store with initial state
+const store = createStore(reducer, preloadedState)
+
+// The client replaces the server pre-rendered response with a browser router
+// by hydrating the application state.
+// @todo Redux says to use 'hydrate', but we get an error.
 ReactDOM.render(
   <Provider store={store}>
     <Router>

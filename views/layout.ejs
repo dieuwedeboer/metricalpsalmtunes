@@ -3,12 +3,19 @@
 <head>
   <title>Metrical Psalm Tunes</title>
   <!-- Scripts and styles here -->
-  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+  <link href="http://fonts.googleapis.com/css?family=Roboto:400,300,500" rel="stylesheet" type="text/css">
 </head>
 <body class="container">
+    <!-- Container for React to render to -->
   <section id="main"><%- content %></section>
 
-    <!-- Include our bundled JS -->
+  <!-- Load initial application state -->
+  <script>
+    console.log(<%- preloadedState %>)
+    window.__PRELOADED_STATE__ = <%- preloadedState %>
+  </script
+
+  <!-- Include our bundled JS -->
   <script src="/js/bundle.js"></script>
 </body>
 </html>
